@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy New Year 2026 🎊</title>
+    <title>Happy New Year 2026 </title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -19,34 +19,10 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            cursor: none;
+            will-change: transform;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #00ffcc;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            transition: transform 0.1s ease;
-            z-index: 9999;
-            mix-blend-mode: difference;
-        }
-
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 255, 204, 0.1);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            transition: transform 0.3s ease;
-            z-index: 9998;
-        }
-
-        /* Enhanced Background */
+        /* Optimized Background - Reduced particles */
         .particles {
             position: fixed;
             top: 0;
@@ -54,18 +30,20 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            contain: strict;
         }
 
         .particle {
             position: absolute;
             border-radius: 50%;
-            animation: float 15s infinite;
+            animation: float 20s infinite linear;
+            will-change: transform;
         }
 
         @keyframes float {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
@@ -81,7 +59,7 @@
             z-index: 1;
         }
 
-        /* Year Display with Glitch Effect */
+        /* Optimized Year Display */
         .year-display {
             position: absolute;
             top: 50%;
@@ -90,6 +68,7 @@
             z-index: 10;
             opacity: 0;
             animation: yearReveal 3s ease-out forwards;
+            contain: layout style paint;
         }
 
         @keyframes yearReveal {
@@ -109,7 +88,7 @@
 
         .year-number {
             font-family: 'Orbitron', sans-serif;
-            font-size: 8rem;
+            font-size: clamp(4rem, 15vw, 8rem);
             font-weight: 900;
             background: linear-gradient(45deg, #ff00cc, #ff0066, #ff3300, #ffcc00, #00ffcc, #00ccff, #3333ff);
             background-size: 400% 400%;
@@ -126,16 +105,17 @@
         }
 
         @keyframes glow {
-            from { filter: drop-shadow(0 0 30px rgba(255, 0, 204, 0.8)); }
-            to { filter: drop-shadow(0 0 60px rgba(0, 255, 204, 0.8)); }
+            from { filter: drop-shadow(0 0 20px rgba(255, 0, 204, 0.6)); }
+            to { filter: drop-shadow(0 0 40px rgba(0, 255, 204, 0.6)); }
         }
 
-        /* Enhanced Content */
+        /* Optimized Content */
         .content {
             opacity: 0;
             animation: fadeInUp 2s ease-out 3s forwards;
             text-align: center;
             max-width: 900px;
+            will-change: transform, opacity;
         }
 
         @keyframes fadeInUp {
@@ -149,7 +129,7 @@
             }
         }
 
-        /* Header - English Main Title */
+        /* Header */
         .header {
             margin-bottom: 40px;
             transform: perspective(1000px) rotateX(10deg);
@@ -161,7 +141,7 @@
         }
 
         .main-title {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 8vw, 3.5rem);
             color: #fff;
             margin-bottom: 10px;
             font-weight: 900;
@@ -171,90 +151,51 @@
 
         @keyframes titlePulse {
             from { transform: scale(1); }
-            to { transform: scale(1.05); }
+            to { transform: scale(1.03); }
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             color: #00ffcc;
             font-weight: 600;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Enhanced Message Box */
+        /* Optimized Message Box */
         .message-box {
             background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             padding: 40px;
             margin: 40px 0;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            transform: perspective(1000px) rotateX(-5deg);
-            transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
-        }
-
-        .message-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 204, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-
-        .message-box:hover::before {
-            opacity: 1;
-            animation: shimmer 0.6s ease;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            will-change: transform;
         }
 
         .message-box:hover {
-            transform: perspective(1000px) rotateX(0deg) translateY(-10px);
-            box-shadow: 0 15px 45px rgba(0, 255, 204, 0.25);
+            transform: translateY(-5px);
             border-color: rgba(0, 255, 204, 0.4);
         }
 
         .message-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            line-height: 1.7;
             color: #f0f0f0;
             margin-bottom: 20px;
             text-align: justify;
-            position: relative;
-            z-index: 1;
-        }
-
-        .message-text:last-child {
-            margin-bottom: 0;
         }
 
         .highlight {
             color: #ffcc00;
             font-weight: 700;
-            background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(255, 0, 204, 0.2));
             padding: 2px 8px;
             border-radius: 8px;
-            animation: highlightGlow 2s ease-in-out infinite alternate;
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(255, 0, 204, 0.2));
         }
 
-        @keyframes highlightGlow {
-            from { box-shadow: 0 0 5px rgba(255, 204, 0, 0.3); }
-            to { box-shadow: 0 0 15px rgba(255, 204, 0, 0.6); }
-        }
-
-        /* Enhanced Buttons */
+        /* Optimized Buttons */
         .buttons {
             display: flex;
             gap: 25px;
@@ -268,39 +209,20 @@
             align-items: center;
             gap: 10px;
             padding: 15px 30px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             color: #fff;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
+            will-change: transform;
         }
 
         .btn-primary {
@@ -309,9 +231,8 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-7px) scale(1.08);
-            box-shadow: 0 15px 35px rgba(255, 0, 204, 0.6);
-            background: linear-gradient(135deg, rgba(255, 0, 204, 0.4), rgba(51, 51, 255, 0.4));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 204, 0.4);
         }
 
         .btn-secondary {
@@ -320,22 +241,20 @@
         }
 
         .btn-secondary:hover {
-            transform: translateY(-7px) scale(1.08);
-            box-shadow: 0 15px 35px rgba(0, 204, 255, 0.6);
-            background: linear-gradient(135deg, rgba(0, 204, 255, 0.4), rgba(0, 255, 204, 0.4));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 204, 255, 0.4);
         }
 
         .btn i {
-            font-size: 1.3rem;
-            z-index: 1;
+            font-size: 1.2rem;
             transition: transform 0.3s ease;
         }
 
         .btn:hover i {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.1);
         }
 
-        /* Confetti Effect */
+        /* Optimized Confetti */
         .confetti {
             position: fixed;
             top: 0;
@@ -344,46 +263,24 @@
             height: 100%;
             pointer-events: none;
             z-index: 5;
+            contain: strict;
         }
 
         .confetti-piece {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ff00cc;
-            animation: confetti-fall 4s linear infinite;
+            width: 8px;
+            height: 8px;
+            animation: confetti-fall 5s infinite linear;
+            will-change: transform;
         }
 
         @keyframes confetti-fall {
             0% {
-                transform: translateY(-100vh) rotate(0deg) scale(0);
-                opacity: 1;
-            }
-            10% {
-                transform: translateY(-90vh) rotate(36deg) scale(1);
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg) scale(0.5);
-                opacity: 0;
-            }
-        }
-
-        /* Fireworks Effect */
-        .firework {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            animation: firework-explode 1s ease-out forwards;
-        }
-
-        @keyframes firework-explode {
-            0% {
-                transform: scale(1);
+                transform: translateY(-100vh) rotate(0deg);
                 opacity: 1;
             }
             100% {
-                transform: scale(25);
+                transform: translateY(100vh) rotate(720deg);
                 opacity: 0;
             }
         }
@@ -392,40 +289,34 @@
         .counter {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin: 30px 0;
+            flex-wrap: wrap;
         }
 
         .counter-item {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             padding: 20px;
-            min-width: 100px;
-            transform: translateY(0) scale(1);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            min-width: 90px;
+            transition: transform 0.3s ease;
+            will-change: transform;
         }
 
         .counter-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(0, 255, 204, 0.5);
-            box-shadow: 0 10px 25px rgba(0, 255, 204, 0.3);
+            transform: translateY(-5px);
         }
 
         .counter-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 900;
             color: #00ffcc;
             font-family: 'Orbitron', sans-serif;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
 
         .counter-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #aaa;
             margin-top: 5px;
             text-transform: uppercase;
@@ -433,31 +324,13 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .year-number {
-                font-size: 5rem;
+            .message-box {
+                padding: 25px;
             }
-
-            .main-title {
-                font-size: 2.5rem;
-            }
-
-            .message-text {
-                font-size: 1rem;
-                text-align: center;
-            }
-
-            .counter {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
+            
             .counter-item {
-                min-width: 80px;
+                min-width: 70px;
                 padding: 15px;
-            }
-
-            .counter-number {
-                font-size: 2rem;
             }
 
             .buttons {
@@ -471,20 +344,17 @@
             }
         }
 
-        /* Ripple Animation */
-        @keyframes ripple {
-            to {
-                transform: scale(4);
-                opacity: 0;
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursorFollower"></div>
-
     <!-- Particles Background -->
     <div class="particles" id="particles"></div>
 
@@ -499,9 +369,9 @@
     <!-- Main Content -->
     <div class="container">
         <div class="content">
-            <!-- Header - English Main Title -->
+            <!-- Header -->
             <div class="header">
-                <h1 class="main-title">🎊 Happy New Year 2026 🎊</h1>
+                <h1 class="main-title"> Happy New Year 2026 </h1>
                 <p class="subtitle">Wishing You Love, Happiness & Success!</p>
             </div>
 
@@ -531,17 +401,17 @@
                     <i class="fas fa-globe"></i> Happy New Year to everyone! I hope it will be a year of <span class="highlight">love, happiness, and success</span> for all. I can't thank you enough for everything, but I especially thank you because you were the main reason the Cyber Security channel reached more than <span class="highlight">1.1k university students</span> from all over the country. I hope to live up to your expectations and provide what you need.
                 </div>
                 <div class="message-text" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px;">
-                    <i class="fas fa-heart" style="color: #ff00cc;"></i> سنة سعيدة على الجميع! أتمنى أن تكون سنة <span class="highlight">حُب وسعادة وموفقية</span> للجميع. لا يسعني شكركم على كل شيء، لكنني أشكركم بشكل خاص لأنكم كنتم السبب الرئيسي في وصول قناة <span class="highlight">الأمن السيبراني</span> إلى أكثر من <span class="highlight">1.1k طالب جامعي</span> من كل أنحاء البلاد. أتمنى أن أكون عند حسن ظنكم وأقدم لكم المطلوب.
+                    <i class="fas fa-heart" style="color: #ff00cc;"></i>    !     <span class="highlight">  </span> .                  <span class="highlight"> </span>    <span class="highlight">1.1k  </span>    .         .
                 </div>
             </div>
 
             <!-- Buttons -->
             <div class="buttons">
-                <a href="https://t.me/IQDGC" class="btn btn-primary" target="_blank">
+                <a href="https://t.me/IQDGC" class="btn btn-primary" target="_blank" rel="noopener">
                     <i class="fab fa-telegram"></i>
                     Cyber Security Channel
                 </a>
-                <a href="https://t.me/BBLCK_K" class="btn btn-secondary" target="_blank">
+                <a href="https://t.me/BBLCK_K" class="btn btn-secondary" target="_blank" rel="noopener">
                     <i class="fas fa-code"></i>
                     Developer <span style="color: #00ffcc;">Hussin Ali</span>
                 </a>
@@ -550,146 +420,127 @@
     </div>
 
     <script>
-        // Custom Cursor
-        const cursor = document.getElementById('cursor');
-        const cursorFollower = document.getElementById('cursorFollower');
-        
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
-        // Create particles background
-        function createParticles() {
+        // Optimized particle system
+        function createOptimizedParticles() {
             const particlesContainer = document.getElementById('particles');
-            const colors = ['#ff00cc', '#ff0066', '#ff3300', '#ffcc00', '#00ffcc', '#00ccff', '#3333ff'];
+            const colors = ['#ff00cc', '#00ffcc', '#00ccff', '#3333ff'];
+            const fragment = document.createDocumentFragment();
             
-            for (let i = 0; i < 150; i++) {
+            for (let i = 0; i < 30; i++) { // Reduced from 150 to 30
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.width = Math.random() * 3 + 2 + 'px'; // Smaller particles
                 particle.style.height = particle.style.width;
                 particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-                particlesContainer.appendChild(particle);
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (20 + Math.random() * 10) + 's';
+                fragment.appendChild(particle);
             }
+            particlesContainer.appendChild(fragment);
         }
 
-        // Create confetti
-        function createConfetti() {
+        // Confetti with reuse
+        function createOptimizedConfetti() {
             const confettiContainer = document.getElementById('confetti');
-            const colors = ['#ff00cc', '#ff0066', '#ff3300', '#ffcc00', '#00ffcc', '#00ccff', '#3333ff'];
+            const colors = ['#ff00cc', '#ff0066', '#ffcc00', '#00ffcc', '#00ccff'];
+            const fragment = document.createDocumentFragment();
             
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 30; i++) { // Reduced from 100 to 30
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti-piece';
                 confetti.style.left = Math.random() * 100 + '%';
                 confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = Math.random() * 4 + 's';
-                confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
-                confettiContainer.appendChild(confetti);
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.animationDuration = (4 + Math.random() * 2) + 's';
+                fragment.appendChild(confetti);
             }
+            confettiContainer.appendChild(fragment);
         }
 
-        // Create fireworks
-        function createFirework() {
-            const colors = ['#ff00cc', '#ff0066', '#ff3300', '#ffcc00', '#00ffcc', '#00ccff', '#3333ff'];
-            const x = Math.random() * window.innerWidth;
-            const y = Math.random() * window.innerHeight * 0.5;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            for (let i = 0; i < 30; i++) {
-                const firework = document.createElement('div');
-                firework.className = 'firework';
-                firework.style.left = x + 'px';
-                firework.style.top = y + 'px';
-                firework.style.background = color;
-                firework.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}`;
-                
-                const angle = (i / 30) * 360;
-                const velocity = 50 + Math.random() * 50;
-                const radians = (angle * Math.PI) / 180;
-                
-                firework.style.transform = `translate(${Math.cos(radians) * velocity}px, ${Math.sin(radians) * velocity}px)`;
-                firework.style.animationDuration = (0.5 + Math.random() * 0.5) + 's';
-                
-                document.body.appendChild(firework);
-                
-                setTimeout(() => firework.remove(), 1000);
-            }
-        }
-
-        // Countdown Timer - Fixed for 2026
+        // Efficient countdown
+        let countdownRAF;
         function updateCounter() {
             const now = new Date();
             const newYear = new Date('2026-01-01T00:00:00');
             const diff = newYear - now;
             
             if (diff > 0) {
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                const days = Math.floor(diff / 86400000);
+                const hours = Math.floor((diff % 86400000) / 3600000);
+                const minutes = Math.floor((diff % 3600000) / 60000);
+                const seconds = Math.floor((diff % 60000) / 1000);
                 
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                // Batch DOM updates
+                requestAnimationFrame(() => {
+                    document.getElementById('days').textContent = String(days).padStart(2, '0');
+                    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                });
             } else {
-                document.querySelector('.counter').innerHTML = '<h2 style="color: #00ffcc; font-size: 2.5rem;">🎉 2026 is Here! 🎉</h2>';
+                cancelAnimationFrame(countdownRAF);
+                document.querySelector('.counter').innerHTML = '<h2 style="color: #00ffcc; font-size: 2rem;"> 2026 is Here! </h2>';
             }
         }
 
-        // Initialize everything
+        // Throttled mouse parallax
+        let mouseRAF;
+        function handleMouseParallax(e) {
+            if (mouseRAF) return;
+            mouseRAF = requestAnimationFrame(() => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 10;
+                const y = (e.clientY / window.innerHeight - 0.5) * 10;
+                document.querySelector('.content').style.transform = `translate(${x}px, ${y}px)`;
+                mouseRAF = null;
+            });
+        }
+
+        // Throttled scroll optimization
+        let scrollRAF;
+        function handleScroll() {
+            if (scrollRAF) return;
+            scrollRAF = requestAnimationFrame(() => {
+                // Add scroll-based optimizations here if needed
+                scrollRAF = null;
+            });
+        }
+
+        // Initialize with performance monitoring
         window.addEventListener('load', () => {
-            createParticles();
-            createConfetti();
+            createOptimizedParticles();
+            createOptimizedConfetti();
             
-            // Show fireworks periodically
-            setInterval(createFirework, 2000);
-            
-            // Update counter every second
+            // Start countdown
             updateCounter();
-            setInterval(updateCounter, 1000);
+            countdownRAF = setInterval(updateCounter, 1000);
             
-            // Mouse parallax effect
-            document.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth - 0.5) * 20;
-                const y = (e.clientY / window.innerHeight - 0.5) * 20;
-                
-                document.querySelector('.content').style.transform = `translateX(${x}px) translateY(${y}px)`;
+            // Throttled event listeners
+            document.addEventListener('mousemove', handleMouseParallax, { passive: true });
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Lazy load heavy effects if needed
+            if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+                // Only add heavy effects if user prefers motion
+            }
+        });
+
+        // Button interactions
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Simplified ripple
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
             });
         });
 
-        // Button click effects
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                // Ripple effect
-                const ripple = document.createElement('span');
-                ripple.style.position = 'absolute';
-                ripple.style.borderRadius = '50%';
-                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
-                ripple.style.transform = 'scale(0)';
-                ripple.style.animation = 'ripple 0.6s linear';
-                ripple.style.left = (e.clientX - this.offsetLeft - 10) + 'px';
-                ripple.style.top = (e.clientY - this.offsetTop - 10) + 'px';
-                ripple.style.width = '20px';
-                ripple.style.height = '20px';
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-                
-                // Extra fireworks on click
-                createFirework();
-            });
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            clearInterval(countdownRAF);
+            cancelAnimationFrame(mouseRAF);
+            cancelAnimationFrame(scrollRAF);
         });
     </script>
 </body>
