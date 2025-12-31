@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy New Year 2026 | عام جديد سعيد</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <title>Happy New Year 2026 🎊</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,14 +14,39 @@
         }
 
         body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e, #1a1a2e);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            cursor: none;
         }
 
-        /* Animated Background */
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00ffcc;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transition: transform 0.1s ease;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 204, 0.1);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+            z-index: 9998;
+        }
+
+        /* Enhanced Background */
         .particles {
             position: fixed;
             top: 0;
@@ -56,7 +81,7 @@
             z-index: 1;
         }
 
-        /* Year Display Animation */
+        /* Year Display with Glitch Effect */
         .year-display {
             position: absolute;
             top: 50%;
@@ -70,15 +95,15 @@
         @keyframes yearReveal {
             0% {
                 opacity: 0;
-                transform: translate(-50%, -50%) scale(0.5);
+                transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
             }
             50% {
                 opacity: 1;
-                transform: translate(-50%, -50%) scale(1.2);
+                transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
             }
             100% {
                 opacity: 0;
-                transform: translate(-50%, -50%) scale(1.5);
+                transform: translate(-50%, -50%) scale(1.5) rotate(360deg);
             }
         }
 
@@ -86,20 +111,26 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 8rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #ff00cc, #3333ff, #00ccff);
+            background: linear-gradient(45deg, #ff00cc, #ff0066, #ff3300, #ffcc00, #00ffcc, #00ccff, #3333ff);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 50px rgba(255, 0, 204, 0.5);
-            animation: glow 2s ease-in-out infinite alternate;
+            animation: gradient 3s ease infinite, glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         @keyframes glow {
-            from { filter: drop-shadow(0 0 20px rgba(255, 0, 204, 0.8)); }
-            to { filter: drop-shadow(0 0 40px rgba(51, 51, 255, 0.8)); }
+            from { filter: drop-shadow(0 0 30px rgba(255, 0, 204, 0.8)); }
+            to { filter: drop-shadow(0 0 60px rgba(0, 255, 204, 0.8)); }
         }
 
-        /* Content Section */
+        /* Enhanced Content */
         .content {
             opacity: 0;
             animation: fadeInUp 2s ease-out 3s forwards;
@@ -110,17 +141,23 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(50px) scale(0.9);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
-        /* Header */
+        /* Header - English Main Title */
         .header {
             margin-bottom: 40px;
+            transform: perspective(1000px) rotateX(10deg);
+            transition: transform 0.5s ease;
+        }
+
+        .header:hover {
+            transform: perspective(1000px) rotateX(0deg);
         }
 
         .main-title {
@@ -128,32 +165,65 @@
             color: #fff;
             margin-bottom: 10px;
             font-weight: 900;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            animation: titlePulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes titlePulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
         }
 
         .subtitle {
             font-size: 1.5rem;
-            color: #00ccff;
+            color: #00ffcc;
             font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Message Box */
+        /* Enhanced Message Box */
         .message-box {
             background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             padding: 40px;
             margin: 40px 0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             transform: perspective(1000px) rotateX(-5deg);
             transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 204, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .message-box:hover::before {
+            opacity: 1;
+            animation: shimmer 0.6s ease;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .message-box:hover {
             transform: perspective(1000px) rotateX(0deg) translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0, 204, 255, 0.2);
+            box-shadow: 0 15px 45px rgba(0, 255, 204, 0.25);
+            border-color: rgba(0, 255, 204, 0.4);
         }
 
         .message-text {
@@ -162,6 +232,8 @@
             color: #f0f0f0;
             margin-bottom: 20px;
             text-align: justify;
+            position: relative;
+            z-index: 1;
         }
 
         .message-text:last-child {
@@ -169,14 +241,20 @@
         }
 
         .highlight {
-            color: #00ffcc;
+            color: #ffcc00;
             font-weight: 700;
-            background: rgba(0, 255, 204, 0.1);
-            padding: 0 5px;
-            border-radius: 5px;
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(255, 0, 204, 0.2));
+            padding: 2px 8px;
+            border-radius: 8px;
+            animation: highlightGlow 2s ease-in-out infinite alternate;
         }
 
-        /* Buttons */
+        @keyframes highlightGlow {
+            from { box-shadow: 0 0 5px rgba(255, 204, 0, 0.3); }
+            to { box-shadow: 0 0 15px rgba(255, 204, 0, 0.6); }
+        }
+
+        /* Enhanced Buttons */
         .buttons {
             display: flex;
             gap: 25px;
@@ -203,6 +281,8 @@
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn::before {
@@ -212,7 +292,7 @@
             left: 50%;
             width: 0;
             height: 0;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
@@ -224,30 +304,88 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, rgba(255, 0, 204, 0.2), rgba(51, 51, 255, 0.2));
-            border: 1px solid rgba(255, 0, 204, 0.4);
+            background: linear-gradient(135deg, rgba(255, 0, 204, 0.3), rgba(51, 51, 255, 0.3));
+            border: 2px solid rgba(255, 0, 204, 0.5);
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(255, 0, 204, 0.4);
-            background: linear-gradient(135deg, rgba(255, 0, 204, 0.3), rgba(51, 51, 255, 0.3));
+            transform: translateY(-7px) scale(1.08);
+            box-shadow: 0 15px 35px rgba(255, 0, 204, 0.6);
+            background: linear-gradient(135deg, rgba(255, 0, 204, 0.4), rgba(51, 51, 255, 0.4));
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, rgba(0, 204, 255, 0.2), rgba(0, 255, 204, 0.2));
-            border: 1px solid rgba(0, 204, 255, 0.4);
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.3), rgba(0, 255, 204, 0.3));
+            border: 2px solid rgba(0, 204, 255, 0.5);
         }
 
         .btn-secondary:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 204, 255, 0.4);
-            background: linear-gradient(135deg, rgba(0, 204, 255, 0.3), rgba(0, 255, 204, 0.3));
+            transform: translateY(-7px) scale(1.08);
+            box-shadow: 0 15px 35px rgba(0, 204, 255, 0.6);
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.4), rgba(0, 255, 204, 0.4));
         }
 
         .btn i {
             font-size: 1.3rem;
             z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff00cc;
+            animation: confetti-fall 4s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg) scale(0);
+                opacity: 1;
+            }
+            10% {
+                transform: translateY(-90vh) rotate(36deg) scale(1);
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Fireworks Effect */
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: firework-explode 1s ease-out forwards;
+        }
+
+        @keyframes firework-explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(25);
+                opacity: 0;
+            }
         }
 
         /* Counter */
@@ -266,13 +404,16 @@
             border-radius: 15px;
             padding: 20px;
             min-width: 100px;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .counter-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.05);
             background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(0, 255, 204, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 255, 204, 0.3);
         }
 
         .counter-number {
@@ -280,12 +421,14 @@
             font-weight: 900;
             color: #00ffcc;
             font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
 
         .counter-label {
             font-size: 0.9rem;
             color: #aaa;
             margin-top: 5px;
+            text-transform: uppercase;
         }
 
         /* Responsive */
@@ -328,19 +471,20 @@
             }
         }
 
-        /* Arabic specific */
-        body[dir="rtl"] .message-text {
-            text-align: right;
-        }
-
-        @media (max-width: 768px) {
-            body[dir="rtl"] .message-text {
-                text-align: center;
+        /* Ripple Animation */
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
     <!-- Particles Background -->
     <div class="particles" id="particles"></div>
 
@@ -355,38 +499,39 @@
     <!-- Main Content -->
     <div class="container">
         <div class="content">
+            <!-- Header - English Main Title -->
             <div class="header">
-                <h1 class="main-title">🎊 سنة جديدة سعيدة 🎊</h1>
-                <p class="subtitle">Happy New Year 2026!</p>
+                <h1 class="main-title">🎊 Happy New Year 2026 🎊</h1>
+                <p class="subtitle">Wishing You Love, Happiness & Success!</p>
             </div>
 
             <!-- Counter -->
             <div class="counter">
                 <div class="counter-item">
                     <div class="counter-number" id="days">00</div>
-                    <div class="counter-label">أيام</div>
+                    <div class="counter-label">Days</div>
                 </div>
                 <div class="counter-item">
                     <div class="counter-number" id="hours">00</div>
-                    <div class="counter-label">ساعات</div>
+                    <div class="counter-label">Hours</div>
                 </div>
                 <div class="counter-item">
                     <div class="counter-number" id="minutes">00</div>
-                    <div class="counter-label">دقائق</div>
+                    <div class="counter-label">Minutes</div>
                 </div>
                 <div class="counter-item">
                     <div class="counter-number" id="seconds">00</div>
-                    <div class="counter-label">ثواني</div>
+                    <div class="counter-label">Seconds</div>
                 </div>
             </div>
 
             <!-- Message Box -->
             <div class="message-box">
                 <div class="message-text">
-                    <i class="fas fa-globe"></i> Happy New Year to everyone! I hope it will be a year of love, happiness, and success for all. I can't thank you enough for everything, but I especially thank you because you were the main reason the Cyber Security channel reached more than <span class="highlight">1.1k university students</span> from all over the country. I hope to live up to your expectations and provide what you need.
+                    <i class="fas fa-globe"></i> Happy New Year to everyone! I hope it will be a year of <span class="highlight">love, happiness, and success</span> for all. I can't thank you enough for everything, but I especially thank you because you were the main reason the Cyber Security channel reached more than <span class="highlight">1.1k university students</span> from all over the country. I hope to live up to your expectations and provide what you need.
                 </div>
                 <div class="message-text" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 20px;">
-                    <i class="fas fa-heart" style="color: #ff00cc;"></i> سنة سعيدة على الجميع! أتمنى أن تكون سنة حُب وسعادة وموفقية للجميع. لا يسعني شكركم على كل شيء، لكنني أشكركم بشكل خاص لأنكم كنتم السبب الرئيسي في وصول قناة <span class="highlight">الأمن السيبراني</span> إلى أكثر من <span class="highlight">1.1k طالب جامعي</span> من كل أنحاء البلاد. أتمنى أن أكون عند حسن ظنكم وأقدم لكم المطلوب.
+                    <i class="fas fa-heart" style="color: #ff00cc;"></i> سنة سعيدة على الجميع! أتمنى أن تكون سنة <span class="highlight">حُب وسعادة وموفقية</span> للجميع. لا يسعني شكركم على كل شيء، لكنني أشكركم بشكل خاص لأنكم كنتم السبب الرئيسي في وصول قناة <span class="highlight">الأمن السيبراني</span> إلى أكثر من <span class="highlight">1.1k طالب جامعي</span> من كل أنحاء البلاد. أتمنى أن أكون عند حسن ظنكم وأقدم لكم المطلوب.
                 </div>
             </div>
 
@@ -394,22 +539,35 @@
             <div class="buttons">
                 <a href="https://t.me/IQDGC" class="btn btn-primary" target="_blank">
                     <i class="fab fa-telegram"></i>
-                    قناة الأمن السيبراني
+                    Cyber Security Channel
                 </a>
                 <a href="https://t.me/BBLCK_K" class="btn btn-secondary" target="_blank">
                     <i class="fas fa-code"></i>
-                    أعداد المطور <span style="color: #00ffcc;">Hussin Ali</span>
+                    Developer <span style="color: #00ffcc;">Hussin Ali</span>
                 </a>
             </div>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
         // Create particles background
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const colors = ['#ff00cc', '#3333ff', '#00ccff', '#00ffcc', '#ffcc00'];
+            const colors = ['#ff00cc', '#ff0066', '#ff3300', '#ffcc00', '#00ffcc', '#00ccff', '#3333ff'];
             
             for (let i = 0; i < 150; i++) {
                 const particle = document.createElement('div');
@@ -427,7 +585,7 @@
         // Create confetti
         function createConfetti() {
             const confettiContainer = document.getElementById('confetti');
-            const colors = ['#ff00cc', '#3333ff', '#00ccff', '#00ffcc', '#ffcc00', '#ff0066', '#ff00ff'];
+            const colors = ['#ff00cc', '#ff0066', '#ff3300', '#ffcc00', '#00ffcc', '#00ccff', '#3333ff'];
             
             for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
@@ -442,7 +600,7 @@
 
         // Create fireworks
         function createFirework() {
-            const colors = ['#ff00cc', '#3333ff', '#00ccff', '#00ffcc', '#ffcc00'];
+            const colors = ['#ff00cc', '#ff0066', '#ff3300', '#ffcc00', '#00ffcc', '#00ccff', '#3333ff'];
             const x = Math.random() * window.innerWidth;
             const y = Math.random() * window.innerHeight * 0.5;
             const color = colors[Math.floor(Math.random() * colors.length)];
@@ -453,7 +611,7 @@
                 firework.style.left = x + 'px';
                 firework.style.top = y + 'px';
                 firework.style.background = color;
-                firework.style.boxShadow = `0 0 10px ${color}`;
+                firework.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}`;
                 
                 const angle = (i / 30) * 360;
                 const velocity = 50 + Math.random() * 50;
@@ -468,11 +626,10 @@
             }
         }
 
-        // عداد العام الجديد - مضبوط مع التوقيت العراقي (UTC+3)
+        // Countdown Timer - Fixed for 2026
         function updateCounter() {
             const now = new Date();
-            // تاريخ 1 يناير 2026 الساعة 00:00:00 بتوقيت العراق (UTC+3)
-            const newYear = new Date('2026-01-01T00:00:00+03:00');
+            const newYear = new Date('2026-01-01T00:00:00');
             const diff = newYear - now;
             
             if (diff > 0) {
@@ -486,7 +643,7 @@
                 document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
             } else {
-                document.querySelector('.counter').innerHTML = '<h2 style="color: #00ffcc; font-size: 2.5rem;">🎉 عام 2026 قد بدأ! 🎉</h2>';
+                document.querySelector('.counter').innerHTML = '<h2 style="color: #00ffcc; font-size: 2.5rem;">🎉 2026 is Here! 🎉</h2>';
             }
         }
 
@@ -502,52 +659,38 @@
             updateCounter();
             setInterval(updateCounter, 1000);
             
-            // Smooth scroll for buttons
-            document.querySelectorAll('.btn').forEach(btn => {
-                btn.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.05)';
-                });
+            // Mouse parallax effect
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
                 
-                btn.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
+                document.querySelector('.content').style.transform = `translateX(${x}px) translateY(${y}px)`;
             });
         });
 
-        // Add click sound effect (optional)
+        // Button click effects
         document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Create ripple effect
+            btn.addEventListener('click', function(e) {
+                // Ripple effect
                 const ripple = document.createElement('span');
                 ripple.style.position = 'absolute';
                 ripple.style.borderRadius = '50%';
                 ripple.style.background = 'rgba(255, 255, 255, 0.5)';
                 ripple.style.transform = 'scale(0)';
                 ripple.style.animation = 'ripple 0.6s linear';
-                ripple.style.left = '50%';
-                ripple.style.top = '50%';
+                ripple.style.left = (e.clientX - this.offsetLeft - 10) + 'px';
+                ripple.style.top = (e.clientY - this.offsetTop - 10) + 'px';
                 ripple.style.width = '20px';
                 ripple.style.height = '20px';
-                ripple.style.marginLeft = '-10px';
-                ripple.style.marginTop = '-10px';
                 
                 this.appendChild(ripple);
                 
                 setTimeout(() => ripple.remove(), 600);
+                
+                // Extra fireworks on click
+                createFirework();
             });
         });
-
-        // Add ripple animation to CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
